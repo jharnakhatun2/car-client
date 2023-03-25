@@ -15,7 +15,7 @@ const ServiceCard = ({service}) => {
         <div className="card-actions justify-between">
           <p className="text-orange-600 text-bold">Price : {price}</p>
           <div>
-          <Link to={`checkout/${_id}`}>
+          <Link to={`/checkout/${_id}`}>
           <BsArrowRight className="text-orange-600 text-bold"/></Link></div>
         </div>
       </div>

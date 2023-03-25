@@ -1,6 +1,8 @@
 import React from 'react';
 import './Banner.css';
 import { BsArrowRight} from "react-icons/bs";
+import { Link } from 'react-router-dom';
+import Modal from '../Appointment/Modal';
 
 const BannerItem = ({slide}) => {
     const {image,id,prev,next} = slide;
@@ -22,8 +24,8 @@ const BannerItem = ({slide}) => {
           </div>
           </div>
           <div className="absolute flex justify-start transform -translate-y-1/2 lg:left-24 left-10 top-2/3 ">
-            <button className="btn btn-active btn-warning mr-5">Read More</button>
-            <button className="btn btn-outline btn-warning">Order Now</button>
+            <button className="btn btn-active btn-warning mr-5"><Link to="/service">Learn More</Link></button>
+            <label htmlFor="bookingModal" className="btn btn-outline btn-warning">Book Now</label>
           </div>
           <div className="absolute flex justify-end transform -translate-y-1/2 left-5 right-5 bottom-0">
             <a href={`#slide${prev}`} className="btn btn-circle mr-5">
@@ -33,6 +35,7 @@ const BannerItem = ({slide}) => {
               ❯
             </a>
           </div>
+          <Modal></Modal>
         </div>
     );
 };

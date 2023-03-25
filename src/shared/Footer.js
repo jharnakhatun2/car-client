@@ -16,16 +16,16 @@ const Footer = () => {
         <div>
           <span className="footer-title">Services</span>
           <a href=" " className="link link-hover">
-            Branding
+            Repair
           </a>
           <a href=" " className="link link-hover">
-            Design
+            Maintenance
           </a>
           <a href=" " className="link link-hover">
-            Marketing
+            Diagnostic
           </a>
           <a href=" " className="link link-hover">
-            Advertisement
+            Oil Change
           </a>
         </div>
         <div>
