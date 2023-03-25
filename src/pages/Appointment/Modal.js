@@ -41,14 +41,13 @@ const Modal = () => {
             .then(res => res.json())
             .then(data =>{
             console.log(data);
-            toast.success('Booking confirmed');
-            // if(data.acknowledged){
-            //      //after submit modal is none
-            //     toast.success('Booking confirmed');
+            
+            if(data.acknowledged){
+                toast.success('Booking confirmed');
                 
-            // }else{
-            //     toast.error(data.message);
-            // }
+            }else{
+                toast.error(data.message);
+            }
             
             })
 
@@ -121,9 +120,10 @@ const Modal = () => {
             <label htmlFor="bookingModal">
             <input type="submit" value="SUBMIT" className="btn btn-accent w-full input-bordered" /> 
             </label>
-            
           </form>
-            
+          <div class="modal-action">
+            <label for="bookingModal" class="btn">Close</label>
+        </div>
         </div>
         </div>
         </>
