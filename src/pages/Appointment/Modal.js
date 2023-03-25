@@ -1,11 +1,57 @@
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
+
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+
+
 
 const Modal = () => {
-    const [value, onChange] = useState(new Date());
-
+    const {user} = useContext(AuthContext)
     const handleSubmit = event =>{
         event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const phone = form.phone.value;
+        const email = form.email.value;
+        const service = form.service.value;
+        const reason = form.reason.value;
+        const date = form.date.value;
+        const time = form.time.value;
+
+        const booking ={
+            name : name,
+            phone : phone,
+            email : email,
+            service : service,
+            reason : reason, 
+            appointmentDate : date, 
+            appointmentTime : time   
+          }
+          console.log(booking);
+          //Todo : send data to the server and
+          // once data is saved then close modal
+          // display success toast
+          fetch(`http://localhost:5000/bookings`,{
+            method : 'POST',
+            headers: {
+            'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+            })
+            .then(res => res.json())
+            .then(data =>{
+            console.log(data);
+            toast.success('Booking confirmed');
+            // if(data.acknowledged){
+            //      //after submit modal is none
+            //     toast.success('Booking confirmed');
+                
+            // }else{
+            //     toast.error(data.message);
+            // }
+            
+            })
+
     }
 
     return (
@@ -20,6 +66,7 @@ const Modal = () => {
             <input
               type="text"
               name="name"
+              defaultValue={user?.displayName}
               placeholder="Your Name"
               className="input input-bordered w-full my-1  "
             />
@@ -29,16 +76,19 @@ const Modal = () => {
               name="phone"
               placeholder="Phone No"
               className="input input-bordered w-full my-1  "
+              required
             />
             <input
               type="text"
               name="email"
+              defaultValue={user?.email}
               placeholder="Email"
               className="input input-bordered w-full my-1  "
+              required
             />
             </div>
 
-            <select className="select select-bordered w-full my-1">
+            <select name="service" className="select select-bordered w-full my-1">
                 <option disabled selected>Select Service :</option>
                 <option>New Tires & Tire Repair</option>
                 <option>Brakes & Brake Repair</option>
@@ -59,15 +109,18 @@ const Modal = () => {
               name="date"
               className="input input-bordered w-full my-1  "
             />
-            <select className="select select-bordered w-full my-1">
+            <select name="time" className="select select-bordered w-full my-1">
                 <option disabled selected>9 AM </option>
                 <option>10 AM</option>
                 <option>11 AM</option>
                 <option>1 PM</option>
                 <option>2 PM</option>
                 <option>3 PM</option>
-            </select>            
-            <label type="submit" htmlFor="bookingModal" className="btn btn-warning w-full input-bordered">SUBMIT</label>
+            </select> 
+                      
+            <label htmlFor="bookingModal">
+            <input type="submit" value="SUBMIT" className="btn btn-accent w-full input-bordered" /> 
+            </label>
             
           </form>
             

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/cardoctor.png";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
@@ -6,6 +6,7 @@ import Modal from "../pages/Appointment/Modal";
 
 const Header = () => {
   const {user,logOut} = useContext(AuthContext);
+  
 
   const handleSignOut=()=>{
     logOut()
@@ -79,7 +80,7 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">{menuItems}</div>
         <div className="navbar-end">
           {/* The button to open modal */}
-        <label htmlFor="bookingModal" className="btn btn-outline btn-warning">Book Appointment</label>
+        <label  htmlFor="bookingModal" className="btn btn-outline btn-warning">Book Appointment</label>
         </div>
       </div>
       <Modal></Modal>

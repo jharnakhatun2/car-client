@@ -1,6 +1,5 @@
 import React from 'react';
 import './Banner.css';
-import { BsArrowRight} from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import Modal from '../Appointment/Modal';
 
