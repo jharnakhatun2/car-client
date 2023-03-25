@@ -8,7 +8,7 @@ const Order = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/orders?email=${user?.email}`)
+    fetch(`https://car-server-ashen.vercel.app/orders?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, [user?.email]);
@@ -16,7 +16,7 @@ const Order = () => {
   const handleDelete = id =>{
     const proceed = window.confirm('Are you sure you want to delete this product');
     if(proceed){
-        fetch(`http://localhost:5000/orders/${id}`,{
+        fetch(`https://car-server-ashen.vercel.app/orders/${id}`,{
             method: 'DELETE',
         })
         .then(res=>res.json())

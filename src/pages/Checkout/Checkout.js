@@ -29,7 +29,7 @@ const Checkout = () => {
         // }else{
 
         // }
-        fetch('http://localhost:5000/orders',{
+        fetch('https://car-server-ashen.vercel.app/orders',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
